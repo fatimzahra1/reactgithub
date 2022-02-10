@@ -1,11 +1,14 @@
 
 import React, {Component} from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/layout/NavBar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
 import Alert  from './components/layout/Alert';
+import About from './components/pages/About';
 import './App.css';
 import axios from 'axios'
+import { Fragment } from 'react/cjs/react.production.min';
 
 class App extends Component {
   state= {
@@ -26,21 +29,35 @@ class App extends Component {
   clearUsers = () => this.setState({users:[], loading:false})
   setAlert = (msg, type) => {
     this.setState({alert: { msg, type}})
+    setTimeout(()=> this.setState({ alert: null}), 5000)
   }
   render () {
     const {users, loading} = this.state
     return (
+      <Router>
       <div className="App">
  
   <NavBar title="Github Finder" icon="fab fa-github"/>
   <div className="container">
   <Alert alert={this.state.alert} />
-    <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers}  setAlert={this.setAlert} showClear={users.length > 0? true:false}/>
+  <Routes>
+    <Route exact path='/' element={
+      <Fragment>
+        <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers}  setAlert={this.setAlert} showClear={users.length > 0? true:false}/>
   <Users loading={loading} users={users}/>
+      </Fragment>
+    }/>
+    <Route  exact path='/about' element={<About />}/>
+
+    
+  </Routes>
+    
   </div>
   
       </div>
-    );
+      </Router>
+    )
+    ;
   }
 }
 
