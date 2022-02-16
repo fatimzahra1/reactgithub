@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
  const UserItem =({user:{login, avatar_url, html_url}})=>{
      
@@ -7,7 +8,7 @@ import React, { Component } from 'react';
         <h3>{login}</h3>
 
         <div>
-            <a href={html_url} className='btn btn-dark btn-sm my-1'>More</a>
+    <Link to={`/user/${login}`} className='btn btn-dark btn-sm my-1'>More</Link>
         </div>
     </div>;
   
