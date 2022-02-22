@@ -3,11 +3,13 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
+import { Repos } from '../repos/Repos';
 
-  const User = ({user, loading, getUser})=> {
+  const User = ({user, loading, getUser, getUserRepos, repos})=> {
     const { login } = useParams();
           useEffect(async () => {
              await getUser(login)
+             await getUserRepos(login)
             
           }, []);
 
@@ -67,6 +69,7 @@ import { Link } from 'react-router-dom';
          <div className='badge badge-dark'>Public Gists: {public_gists} </div>
 
         </div>
+        <Repos repos={repos} />
         </Fragment>
     );
 }
