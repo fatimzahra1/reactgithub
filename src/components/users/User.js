@@ -1,11 +1,16 @@
 import React, {Fragment} from 'react';
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import { Repos } from '../repos/Repos';
+import GithubContext from '../../context/github/githubContext';
 
-  const User = ({user, loading, getUser, getUserRepos, repos})=> {
+  const User = ()=> {
+      const githubContext = useContext(GithubContext)
+
+    const {getUser, loading, user, getUserRepos, repos} = githubContext
+
     const { login } = useParams();
           useEffect(async () => {
              await getUser(login)

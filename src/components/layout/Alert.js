@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Alert = ({ alert }) => {
+const Alert = () => {
   return (
-      alert!== null && (
-          <div className={`alert alert-${alert.type}`}>
-              <i className='fas fa-info-circle' /> {alert.msg}
+    
+          <div >
+              <i className='fas fa-info-circle' /> Write a name please
           </div>
       )
-  )
+  
 };
  
 export default Alert
