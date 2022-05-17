@@ -2,7 +2,7 @@
 
 /* Global Styles */
 :root {
-  --primary-color: #dc3545;
+  --primary-color: #FFC300;
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -250,7 +250,7 @@ img {
 .badge-primary,
 .alert-primary {
   background: var(--primary-color);
-  color: #fff;
+  color: black;
 }
 
 .btn-light,
@@ -363,7 +363,7 @@ table th {
 }
 
 .navbar a {
-  color: #fff;
+  color: black;
   padding: 0.45rem;
   margin: 0 0.25rem;
 }
